@@ -1,0 +1,25 @@
+
+STDOPT = -w -a
+COPT1 = 
+
+.c.com :
+	$(CC) -mt $(STDOPT) $(COPT1) $*.c
+	exe2bin $* $*.com
+	del $*.obj
+	del $*.exe
+
+e.com :
+
+#installは、使用時には修正を要します。
+#.comをｂｉｎディレクトリにコピーして、
+#マニュアルファイルをＡＳＣＩＩ　ＴＯＯＬＳ－３のｍａｎ．ｅｘｅ用に
+#追加します。
+install :
+	copy e.com i:\bin
+	ar rM i:\doc\man.doc e.1
+	man -r
+
+arc :
+	lharc a e002.lzh e.man e.c makefile
+
+
